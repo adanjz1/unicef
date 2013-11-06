@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap, from LayoutIt!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+        <script type='text/javascript' src='js/vectordiv.js'></script>
+        <script>
+            $(document).ready(function(){
+                setInterval(doLayout, 500)
+               
+                $('.ingresar img').click(function(){
+                    $.ajax({
+                        type: "POST",
+//                        url: "https://www.uncaminoalsol.org.ar/api/api.php",
+                          url: "https://www.uncaminoalsol.org.ar/api/amf/client.php",
+//                          url: "api.php",
+//                           url: "amf/client.php",
+                        data: { action: 'login', username: $('#inputEmail').val(), password: $('#inputPassword').val() },
+                        dataType: "json"
+                      }).done(function( result ) {
+                          
+                        if(result.success == true){
+                            getLogedPage(result.id,result.access_token);
+                        }else{
+                            alert(result.msj);
+                        }
+                      });
+                });
+                $('.comoParticipar img').click(function(){
+                    document.location = 'como_participar.html'; 
+                });
+                $('.recuperarContrasena').click(function(){
+                    if($('#inputEmail').val() != ''){
+                        $.ajax({
+                            type: "POST",
+    //                        url: "https://www.uncaminoalsol.org.ar/api/api.php",
+                              url: "https://www.uncaminoalsol.org.ar/api/amf/client.php",
+//                           url: "amf/client.php",
+                            data: { action: 'getPassword', username: $('#inputEmail').val()},
+                            dataType: "json"
+                          }).done(function( result ) {
+                            if(result.success == true){
+                                alert('Tu contraseña es: '+result.password);
+                            }else{
+                                alert(result.msj);
+                            }
+                          });     
+                    }else{
+                        alert('Debe ingresar su email para poder recuperar su contraseña');
+                    }
+                })
+                vectorDiv( 'up',  'textoBases', "up", "25" ); 
+                vectorDiv( 'down',  'textoBases', "DOWN", "25" ); 
+            });
+            function doLayout(){
+//            $('.log').html(($('.footer').position().top+70)+'----'+$('body').height()+'----'+$('#clearado').position().top)
+
+            if(($('.footer').position().top+70) < $('body').height()){ 
+                    $('.footer').css('position','absolute');
+                    $('.footer').css('bottom',0);
+                    //$('.footer').css('height','70px');
+                    $('.footer').css('width','100%');
+                }else if(($('.footer').position().top+70) > $('body').height()){
+                    $('.footer').css('position','relative');
+                }
+                if(($('.footer').position().top+70) < $('#clearado').position().top ){
+                     $('.footer').css('position','relative');
+                }
+            }
+            function getLogedPage(id,access_token){
+                $.ajax({
+                    type: "POST",
+//                    url: "https://www.uncaminoalsol.org.ar/api/api.php",
+//                      url: "amf/client.php",
+                        url: "https://www.uncaminoalsol.org.ar/api/amf/client.php",
+//                        url: "amf/client.php",
+                    data: { action: 'getUserData', id: id, access_token: access_token },
+                    dataType: "json"
+                  }).done(function( result ) {
+                      console.log(result);
+                    if(result.success == true){
+                        console.log(result);
+                        $('.subhead').show();
+                        $('.notificacionesI').show();
+                        $('.line').addClass('logged');
+                        $('#nombre').html('<div class="bienvenido2 font">¡BIENVENIDO!</div><span id="nombreText">'+result.usuario.Nombre+' '+result.usuario.Apellido+'</span>');
+                        console.log(result.usuario);
+                        $('#pasosAcumulado').html(''+result.usuario.Pasos+'');
+                        $('#pasosSemanal').html(''+result.usuario.PasosSemanal+'');
+                        $('#rankingSemanal').html(''+result.usuario.calcRankingSemanal+'');
+                        $('#rankingAcumulado').html(''+result.usuario.calcRankingAcumulado+'');
+                        
+                        $('.valueInvitados').html(''+result.usuario.calcCantidadAmigosInvitaste+'');
+                        $('.valueDonaciones').html(''+result.usuario.calcCantidadDonacionesGraciasAVos+'');
+                        $('.valuePasos').html(''+result.usuario.calcCantidadPasosGraciasAVos+'');
+                        $('.notificacionesGlobales').html(result.eventoGlobal);
+                        $('.container-fluid').hide();
+                        $('.footer').css('position','relative');
+                        $('.recuperarContrasena').hide();
+                        $('.premios').hide();
+                        $('.comoParticipar').hide();
+                        $('.caminoInfo').show();
+                        $('.bases').show();
+                        $('.logoMimo').show();
+                        $('.notificacionesGlobales').show();
+                        $.each( result.notificaciones, function( key, value ) {
+                            console.log(value);
+                            $('#textoBases').append('<div class="notificacion">'+value.descripcion+'</div>');
+                        });
+                    }
+                  });
+            }
+        </script>
+</head>
+
+<body>
+    <div id="page-wrap">
+        <!--<div class="log"></div>-->
+    <div class="header"><img src="img/head.png" class="head"><div id="nombre"><div class="bienvenido font">¡BIENVENIDO!</div></div></div>
+    <div class="line"><img src="img/line.png" class="line"></div>
+    
+    <div class="subhead">
+        <table>
+            <tr>
+                <td style="width: 50%;">
+                    <div class="abut">Este es tu <span class="celeste">TABLERO DE CONTROL</span>. Desde ac&aacute; podr&aacute;s ver c&oacute;mo avanza tu camino y quienes te ayudaron. <br/><br/><b>&iexcl;Contamos con vos!</b></div>
+                </td>
+                <td style="vertical-align: top;width: 50%;">
+                    <table cellspacing="10" style="
+    width: 100%;text-align: center;
+" border="0">
+                        <tr style="height: 50px;">
+                            <td style="width:30%; color:#b40177; font-size: 8px;line-height: 9px;"><span id="rankingSemanal" style="font-size: 18px"></span><br/>TU RANKING SEMANAL</td>
+                            <td style="width:5%"></td>
+                            <td style="width:30%; color:#929f0f; font-size: 8px;line-height: 9px;"><span id="rankingAcumulado" style="font-size: 18px"></span><br/>TU RANKING ACUMULADO</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#f47e45; font-size: 8px;line-height: 9px;"><span id="pasosSemanal" style="font-size: 18px"></span><br/>TUS PASOS DE ESTA SEMANA</td>
+                            <td></td>
+                            <td style=" color:#db002c; font-size: 8px;line-height: 9px;"><span id="pasosAcumulado" style="font-size: 18px"></span><br/>TU PASOS ACUMULADOS</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <div style="clear:both"></div>
+    </div>
+    <div class="caminoInfo" style="display:none">
+        <span class="titDat">Pasos que se dieron gracias a vos</span><span class="valuePasos"></span><br/>
+        <span class="titDat">Cantidad de amigos que invitaste</span><span class="valueInvitados"></span><br/>
+        <span class="titDat">Donaciones que se hicieron gracias a vos</span><span class="valueDonaciones"></span>
+    </div>
+    <div class="notificacionesI"></div>
+<div class="container-fluid" style="text-align:center;">
+	<div class="row-fluid">
+		<div class="span12">
+			<form class="form-horizontal">
+				<div class="control-group">
+					 <div class="controls">
+						<input type="text" id="inputEmail" placeholder="email">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<input type="password" id="inputPassword" placeholder="contrase&ntilde;a">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+                                            <div class="ingresar"><img src="img/ingresar.png"/></div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+    <div class="recuperarContrasena">Olvid&eacute; mi contrase&ntilde;a</div>
+    <div class="premios"><img src="img/premios.png"/></div>
+    <div class="comoParticipar"><img src="img/comoParticipar.png"/></div>
+    <div class="bases" style="display: none;">
+        <div class="font tituloCamino">TU CAMINO</div>
+        <a href="#"><img src="img/scrollUp.png" id="up"/></a>
+        <div class="texto">
+            <div class="textoBase" id="textoBases">
+            </div>
+        </div>
+        <a href="#"><img src="img/scrollDown.png" id="down"/></a>
+    </div>
+    <div class="notificacionesGlobales" style="display:none">
+        
+    </div>
+</div>
+    <div id="clearado" style="clear: both"></div>
+    <footer class="footer">
+        <img src="img/logo.png" class="logo"/>
+    </footer>
+</body>
+</html>

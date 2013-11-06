@@ -1,0 +1,616 @@
+@font-face {
+    font-family: "AnkeSans";
+    src: url(../fonts/AnkeSans.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Univers";
+    src: url(../fonts/UniversLTStd.otf) format("truetype");
+}
+@font-face {
+    font-family: "Univers bold";
+    src: url(../fonts/UniversLTStd-Bold.otf) format("truetype");
+}
+.font{
+    font-family: "AnkeSans";
+}
+body,input{
+    font-family: "Univers";
+}
+body{
+   /*border:3px solid #00a2e3;*/
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0px;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0px; /* bottom = footer height */
+    -webkit-box-align: stretch; -webkit-box-orient: vertical;  
+   display: -moz-box; -moz-box-align: stretch; -moz-box-orient: vertical;
+}
+html,body{
+    height: 100%;
+}
+#page-wrap{
+     -webkit-box-flex: 1;  -moz-box-flex: 1; position: relative; z-index: 2;
+}
+.val{
+    background: url('../img/rankCircle.png') no-repeat;
+    background-size: 100%;
+    padding-top: 100%;
+}
+.valpt{
+    background: url('../img/pasosCircle.png') no-repeat;
+    background-size: 100%;
+    padding-top: 100%;
+}
+.val .dat{
+    margin-top: -60%;
+    color: #78840c;
+    font-weight:bold;
+    min-width: 50px;
+    font-family: 'univers bold';
+}
+.valpt .dat{
+    margin-top: -50%;
+    color: #78840c;
+    font-weight:bold;
+    min-width: 50px;
+    font-family: 'univers bold';
+    font-size: 17px;
+}
+.bienvenido,.bienvenido2{
+    font-size: 7vw;
+    color:#00a2e3;
+    margin: auto;
+    display:inline;
+}
+.celeste{
+    color:#00a2e3;
+    font-weight: bold;
+}
+
+.container-fluid{
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+.header,.line{
+    text-align: center;
+    
+}
+.header .head{
+    width: 100%;
+    margin: auto;
+}
+.header .bienvenido,.header .bienvenido2{
+    margin-bottom: 0px;
+    width: 60%;
+}
+.line{
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+#nombreText{
+    display: inline;
+    margin-left: 40%;
+    font-size: 4vw;
+    color:#00a2e3;
+}
+.abut{
+    font-size: 9px;
+    line-height: 8px;
+    margin-left: 5px;
+    margin-top: -10px;
+}
+input{
+    border-radius: 0px !important;
+    border: 4px solid #00a2e3 !important;
+}
+.form-horizontal .controls{
+    margin:0px;
+}
+.footer{
+    background-color: #00a2e3;
+    /*width: 100%;*/
+    height: 70px;
+    position: relative; z-index: 3;
+    /*left: 0%;*/
+    /*position: relative;*/
+    /*margin: 80px 0 0;*/
+    
+}
+.footer .logo{
+    position: absolute;
+    right: 5%;
+    margin-top: 25px;
+    width: 50%;
+    min-width: 200px;
+    max-width: 410px;
+}
+.subhead{
+    display: none;
+}
+.about{
+    width: 45%;
+    font-size: 3vw;
+    line-height: 3vw;
+    margin-left: 5px;
+    float:left;
+}
+#nombre{
+    margin-left: 20px;
+    margin-top: 30px;
+    width: 100%;
+    margin: 10px auto -10px auto;
+}
+.recuperarContrasena{
+    margin-top: -52px;
+    margin-left: 15%;
+    color: #000;
+    font-size: 8px;
+    cursor: pointer;
+}
+.premios img{
+    width: 40%;
+    margin-left: 15%;
+    margin-top: 40px;
+}
+input{
+    width: 70%;
+}
+.ingresar img{
+    width: 40%;
+    margin-left: 37%;
+    margin-top: -15px;
+    max-width: 240px;
+    cursor:pointer;
+}
+.comoParticipar{
+    cursor: pointer;
+    margin-top: -60px;
+    margin-left: 57%;
+    width: 30%;
+    margin-bottom: 50PX;
+}
+.title{
+    width: 50%;
+    margin-top: -30px;
+    margin-left: 5%;
+}
+.notificacionesGlobales{
+    margin-top: 20px;
+    background-color: #da002c;
+    padding: 5px;
+    font-size: 3vw;
+    position: relative;
+}
+.volver{
+    width: 20%;
+    margin-top: -15px;
+    float: right;
+    margin-right: 10%;
+    max-width: 100px;
+    cursor: pointer;
+}
+.bases{
+    margin-top: 80px;
+}
+#up{
+    margin-left: 38%;
+    margin-bottom: 5px;
+}
+#down{
+    margin-left: 38%;
+    margin-top: 5px;
+}
+.txtNom{
+    position: absolute;
+    left: 132px;
+    top: 87px;
+    font-size: 10px;
+}
+.textoBases{
+    margin-top: 20%;
+    padding: 5%;
+}
+.textoBase{
+    max-height: 200px;
+    overflow: hidden;
+}
+#puntos{
+    color:#78840c;
+    font-size: 3vw;
+    background-size: 55%;
+    width:30%;
+    float:left;
+    margin-right: 2%;
+
+}
+.valor{
+    font-weight: bold;
+    text-align: center;
+    width: 35%;
+    margin-top: -61%;
+    margin-left: 31%;
+}
+.puntosVal{
+    /*background: url('../img/pasosCircle.png') no-repeat;*/
+    /*height: 80px;*/
+    background-size: 100%;
+}
+.rankingVal{
+    /*background: url('../img/rankCircle.png') no-repeat;*/
+    height: 0px;
+    background-size: 100%;
+}
+
+.textDesc{
+    font-size: 8px;
+    line-height: 7px;
+    text-align: center;
+    margin-top: 29%;
+    width:auto;
+    color: #78840c;
+}
+.pasos{
+    margin-left: 32%;
+    margin-top: -82%;
+    width: 30%;
+}
+#puntos .valor{
+    margin-top: -57%;
+    margin-left: 32%;
+}
+#ranking{
+    color:#78840c;
+    font-size: 3vw;
+    background-size: 55%;
+    width:30%;
+    float:left;
+    margin-right: 2%;
+}
+#ranking2{
+    color:#78840c;
+    font-size: 3vw;
+    background-size: 55%;
+    width:30%;
+    float:left;
+    margin-right: 2%;
+}
+.circulos{
+    width:50%;
+    float:right;
+}
+.notificacion{
+    background-color: #00a2e3;
+padding: 5px;
+font-size: 12px;
+margin-bottom: 1px;
+color:#fff;
+}
+.tituloCamino{
+    color: #00a2e3;
+    font-size: 5vw;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: -5px;
+}
+.logoMimo{
+    background: url('../img/logoMimo.png') no-repeat;
+background-size: 100%;
+width: 20%;
+height: 30px;
+position: absolute;
+display: none;
+    
+}
+.bienvenido{
+    font-size: 22px;
+    margin-left: -22px;
+}
+.bienvenido2{
+font-size: 22px;
+left: 0px;
+position: absolute;
+}
+/*     RESPONSIVE Width:0 to 320px     */
+@media (max-width: 321px) and (min-width: 0px){
+    #nombre{
+        margin-top: 10px;
+        margin-bottom: -5px;
+    }
+    .recuperarContrasena{
+        font-size: 8px;
+        width: 104px;
+        margin-top: -48px;
+        
+    }
+    .ingresar img{
+        width: 30%;
+        margin-left: 47%;
+    }
+    .line{
+        margin-bottom: 15px;
+        width: 213px;
+        height: 6px;
+        margin-left: 23px;
+    }
+    .premios img{
+        width: 41%;
+        margin-top: 10px;
+    }
+    .comoParticipar{
+        margin-top: -70px;
+        margin-left: 54%;
+        margin-bottom: 80px;
+    }
+
+    input[type=password]{
+        margin-top: -15px;
+    }
+    .title{
+        margin-top: -5px;
+    }
+    .logoMimo{
+top: 122px;
+right: 24px;
+width: 17%;
+    }
+    #ranking .valor{
+        top:19%;
+    }
+    #ranking2 .valor{
+        top:19%;
+    }
+    #down, #up{
+        width: 30px;
+    }
+    .txtNom{
+        left: 160px;
+        top: 124px;
+    }
+    .about{
+        width: 45%;
+    }
+}
+@media (max-width: 650px) and (min-width: 321px){
+    #nombre{
+        margin-top: 10px;
+        margin-bottom: -5px;
+    }
+    .bienvenido2{
+        font-size: 23px;
+        left: 0px;
+        position: absolute;
+    }
+    .bienvenido{
+        font-size: 35px;
+    }
+     .line{
+        margin-bottom: 15px;
+        width: 82%;
+        height: 6px;
+        margin-left: 23px;
+    }
+    .comoParticipar{
+        margin-top: -110px;
+        margin-bottom: 160px;
+    }
+    .title{
+        margin-top: 0px;
+    }
+    .recuperarContrasena{
+        width: 185px;
+        font-size: 8px;
+        
+    }
+    .logoMimo{
+        top: 188px;
+        right: 24px;
+        width: 17%;
+    }
+    .txtNom{
+        left: 264px;
+        top: 198px;
+        font-size: 17px;
+    }
+    .about{
+        width: 45%;
+        margin-top: 25px;
+    }
+    .ingresar{
+        margin-top: 10px;
+    }
+    .valor{
+        top:27%;
+    }
+    #ranking .valor, #ranking2 .valor{
+        top:25%;
+    }
+}
+@media  (min-width: 650px){
+    .recuperarContrasena{
+        width: 230px;
+        margin-left: 17%;
+        font-size: 8px;
+    }
+     .ingresar{
+        margin-top: 10px;
+    }
+    .bienvenido2{
+        font-size: 40px;
+        height: 30px;
+    }
+    .about{
+        width: 45%;
+        margin-top: 10px;
+    }
+    .bienvenido{
+        font-size: 40px;
+    }
+    .comoParticipar{
+        margin-top: -170px;
+        margin-bottom: 160px;
+    }
+    .logoMimo{
+        top: 276px;
+        right: 24px;
+        width: 17%;
+        height: 40px;
+    }
+    .txtNom{
+        left: 344px;
+        top: 305px;
+        font-size: 17px;
+    }
+    .line{
+        margin-bottom: 15px;
+        width: 82%;
+        height: 6px;
+        margin-left: 40px;
+    }
+    .title{
+        margin-top: 20px;
+    }
+    .valor{
+        top:27%;
+    }
+}
+@media  (min-width: 769px){
+    .recuperarContrasena{
+        width: 350px;
+        margin-left: 17%;
+    }
+     .comoParticipar{
+        margin-top: -170px;
+        margin-bottom: 230px;
+    }
+    .title{
+        margin-top: 0px;
+    }
+    .logoMimo {
+    top: 360px;
+    right: 24px;
+    width: 20%;
+    height: 50px;
+    }
+    .bienvenido,.bienvenido2{
+        font-size: 60px;
+    }
+    .txtNom {
+        left: 477px;
+        top: 387px;
+        font-size: 30px;
+    }
+    .ingresar{
+        margin-left: 14%;
+    }
+    #puntos .textDesc{
+        margin-top: 44%;
+    }
+    .textDesc{
+        margin-top: 51%;
+    }
+    #puntos .valor {
+        margin-top: -32%;
+        margin-left: 19%;
+    }
+    .valor{
+        margin-top: -48%;
+        margin-left: 31%;
+    }
+}
+@media (min-width: 799px){
+    #puntos .valor {
+        margin-top: -32%;
+        margin-left: 22%;
+    }
+    .valor{
+        margin-top: -41%;
+        margin-left: 21%;
+    }
+}
+@media (max-width: 350px) and (min-width: 310px){
+    .txtNom{
+        left: 196px;
+        top: 126px;
+    }
+}
+
+@media (max-width: 400px) and (min-width: 335px){
+    .txtNom{
+        left: 219px;
+        top: 149px;
+
+    }
+}
+@media (max-width: 372px) and (min-width: 336px){
+    .txtNom{
+        left: 213px;
+top: 131px;
+
+    }
+}
+@media (max-width: 450px) and (min-width: 400px){
+    .txtNom{
+        left: 230px;
+        top: 165px;
+    }
+    #puntos .textDesc{
+        margin-top: 33%;
+    }
+    .textDesc{
+        margin-top: 41%;
+    }
+}
+@media (max-width: 481px) and (min-width: 451px){
+    .txtNom {
+left: 244px;
+top: 174px;
+    }
+    .about {
+        width: 45%;
+    }
+    #puntos .textDesc{
+        margin-top: 43%;
+    }
+    .textDesc{
+        margin-top: 41%;
+    }
+}
+@media (max-width: 660px) and (min-width: 560px){
+    .txtNom {
+        left: 294px;
+top: 238px;
+    }
+}
+@media (min-width: 482px){
+    #puntos .textDesc{
+        margin-top: 34%;
+    }
+    .textDesc{
+        margin-top: 48%;
+    }
+}
+.caminoInfo .titDat{
+    color: #00a2e3;
+}
+.caminoInfo{
+    float: right;
+    text-align: right;
+    font-size: 9px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+.valueDonaciones, .valueInvitados, .valuePasos{
+    font-weight: bold;
+font-size: 10px;
+color: #000;
+margin-left: 5px;
+}
