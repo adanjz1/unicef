@@ -1,9 +1,9 @@
 <?php
  header('Access-Control-Allow-Origin: *');
     // Conectando, seleccionando la base de datos
-//    $mysqli = new mysqli("mysql.uncaminoalsol.org.ar", "uncamino", "SPERuwa5", "uncamino");
+//    $mysqli = new mysqli("", "uncamino", "SPERuwa5", "uncamino");
     $mysqli = new mysqli("localhost", "root", "123456", "uncamino");
-//    $mysqli = new mysqli("adanetemysql.descuentosba.com", "descuentosbabdu", "sU3#roEpMa!", "peimeo");
+//    $mysqli = new mysqli("", "", "sU3#roEpMa!", "peimeo");
     /* verificar la conexión */
     if (mysqli_connect_errno()) {
         $resultado['msj'] = "Dispositivo sin acceso a internet.";
